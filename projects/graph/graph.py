@@ -47,7 +47,9 @@ class Graph:
 
             dequeue_vert = q.dequeue()
             if dequeue_vert not in visited:
+
                 print(dequeue_vert)
+
                 visited.add(dequeue_vert)
 
                 for neighbors in self.get_neighbors(dequeue_vert):
@@ -59,6 +61,21 @@ class Graph:
         beginning from starting_vertex.
         """
         pass  # TODO
+
+        visited = set()
+        s = Stack()
+
+        if starting_vertex in self.vertices:
+            s.push(starting_vertex)
+
+        while s.size() > 0:
+            current_pop_vert = s.pop()
+
+            if current_pop_vert not in visited:
+                print(current_pop_vert)
+                visited.add(current_pop_vert)
+                for neighbors in self.vertices[current_pop_vert]:
+                    s.push(neighbors)
 
     def dft_recursive(self, starting_vertex):
         """
@@ -138,7 +155,7 @@ if __name__ == '__main__':
         1, 2, 4, 3, 7, 6, 5
         1, 2, 4, 3, 7, 5, 6
     '''
-    graph.bft(1)
+    # graph.bft(1)
 
     '''
     Valid DFT paths:
